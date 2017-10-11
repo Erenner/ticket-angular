@@ -1,0 +1,51 @@
+.search {
+	float: right;
+	margin-bottom: 15px;
+}
+
+.search .input-group {
+	width: 250px;
+}
+
+.orders .actions {
+	width: 70px;
+	text-align: center;
+}
+
+.orders .actions .edit,
+.orders .actions .delete {
+	color: #777777;
+}
+
+.orders .actions .edit {
+	margin-right: 8px;
+}
+
+.orders .actions .edit:hover {
+	color: #337ab7;
+	cursor: pointer;
+}
+
+.orders .actions .delete:hover {
+	color: #d9534f;
+	cursor: pointer;
+}
+
+.orders .status {
+	width: 70px;
+	text-align: center;
+}
+
+.orders .cost {
+	width: 100px;
+}
+
+.general-actions {
+	border-top: 1px solid #dddddd;
+	padding-top: 12px;
+	text-align: right;
+}
+
+.no-orders-message {
+	text-align: center;
+}
