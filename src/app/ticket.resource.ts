@@ -9,10 +9,10 @@ class TicketLinks {
 export class Ticket {
 
   id: number;
-  creator: string;
+  reqestor: string;
   description: string;
-  private costInCents: number;
-  isComplete: boolean = false;
+  created: Date;
+  due: Date;
   links: OrderLinks;
 
   public constructor() { }
