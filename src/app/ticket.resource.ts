@@ -9,60 +9,41 @@ class TicketLinks {
 export class Ticket {
 
   id: number;
-  reqestor: string;
+  creator: string;
   description: string;
   created: Date;
   due: Date;
-  links: OrderLinks;
+  links: TicketLinks;
 
   public constructor() { }
 
-  public static fromJson(json: any): Order {
-    const order = new Order();
-    order.deserialize(json);
-    return order;
+  public static fromJson(json: any): Ticket {
+    const ticket = new Ticket();
+    ticket.deserialize(json);
+    return ticket;
   }
 
   public deserialize(json: any) {
     this.id = json.id;
+    this.creator = json.creator;
     this.description = json.description;
-    this.costInCents = json.costInCents;
-    this.isComplete = json.complete;
+    this.created = json.created;
+    this.due = json.due;
     this.links = json._links;
   }
 
   public serialize(): any {
     return {
       'id': this.id,
+      'creator': this.creator,
       'description': this.description,
-      'costInCents': this.costInCents,
-      'complete': this.isComplete
+      'created': this.created,
+      'due': this.due
     };
   }
 
-  set cost(cost: number) {
-    this.costInCents = cost * 100.0;
+  get isDue(): boolean {
+    return true;
   }
 
-  public toggleComplete() {
-    this.isComplete = !this.isComplete;
-  }
-
-  get isIncomplete(): boolean {
-    return !this.isComplete;
-  }
-
-  get cost(): number {
-
-    if (this.costInCents === 0) {
-      return 0.0;
-    }
-    else {
-      return this.costInCents / 100.0;
-    }
-  }
-
-  get costString(): string {
-    return `\$${this.cost.toFixed(2)}`;
-  }
 }

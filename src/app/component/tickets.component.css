@@ -7,36 +7,36 @@
 	width: 250px;
 }
 
-.orders .actions {
+.tickets .actions {
 	width: 70px;
 	text-align: center;
 }
 
-.orders .actions .edit,
-.orders .actions .delete {
+.tickets .actions .edit,
+.tickets .actions .delete {
 	color: #777777;
 }
 
-.orders .actions .edit {
+.tickets .actions .edit {
 	margin-right: 8px;
 }
 
-.orders .actions .edit:hover {
+.tickets .actions .edit:hover {
 	color: #337ab7;
 	cursor: pointer;
 }
 
-.orders .actions .delete:hover {
+.tickets .actions .delete:hover {
 	color: #d9534f;
 	cursor: pointer;
 }
 
-.orders .status {
+.tickets .status {
 	width: 70px;
 	text-align: center;
 }
 
-.orders .cost {
+.tickets .cost {
 	width: 100px;
 }
 
@@ -46,6 +46,6 @@
 	text-align: right;
 }
 
-.no-orders-message {
+.no-tickets-message {
 	text-align: center;
 }

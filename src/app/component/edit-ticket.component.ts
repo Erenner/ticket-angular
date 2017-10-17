@@ -1,42 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../service/order.service';
-import { Order } from '../order.resource';
+import { TicketService } from '../service/ticket.service';
+import { Ticket } from '../ticket.resource';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { SaveOrderComponent } from './save-order.component';
+import { SaveTicketComponent } from './save-ticket.component';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-    templateUrl: './save-order.component.html',
-    styleUrls: ['./save-order.component.css'],
-    selector: 'edit-order'
+  templateUrl: './save-ticket.component.html',
+  styleUrls: ['./save-ticket.component.css'],
+  selector: 'edit-ticket'
 })
-export class EditOrderComponent extends SaveOrderComponent {
+export class EditTicketComponent extends SaveTicketComponent {
 
-    public constructor(
-        private orderService: OrderService, 
-        private route: ActivatedRoute,
-        router: Router) {
-            super(router);
-    }
+  public constructor(
+    private ticketService: TicketService,
+    private route: ActivatedRoute,
+    router: Router) {
+    super(router);
+  }
 
-    protected loadOrder(): Promise<Order> {
-        return new Promise<Order>(resolver => {
-            this.route.paramMap
-                .switchMap(params => this.orderService.getOrder(+params.get('id')))
-                .subscribe(order => resolver(order))
-        });
-    }
+  protected loadTicket(): Promise<Ticket> {
+    return new Promise<Ticket>(resolver => {
+      this.route.paramMap
+        .switchMap(params => this.ticketService.getTicket(+params.get('id')))
+        .subscribe(ticket => resolver(ticket))
+    });
+  }
 
-    protected onSave() {
-        this.orderService.updateOrder(this.order).then(order => this.navigateToOrders());
-    }
+  protected onSave() {
+    this.ticketService.updateTicket(this.ticket).then(ticket => this.navigateToTickets());
+  }
 
-    protected getTitle(): string {
-        return "Edit Order";
-    }
+  protected getTitle(): string {
+    return 'Edit Ticket';
+  }
 
-    protected getSaveButtonText() {
-        return 'Update';
-    }
+  protected getSaveButtonText() {
+    return 'Update';
+  }
 }

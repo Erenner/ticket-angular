@@ -1,38 +1,37 @@
+import { Ticket } from './../ticket.resource';
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../service/order.service';
-import { Order } from '../order.resource';
+import { TicketService } from '../service/ticket.service';
 import { Router } from '@angular/router';
-import { SaveOrderComponent } from './save-order.component';
+import { SaveTicketComponent } from './save-ticket.component';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-    templateUrl: './save-order.component.html',
-    styleUrls: ['./save-order.component.css'],
-    selector: 'create-order'
+  templateUrl: './save-ticket.component.html',
+  styleUrls: ['./save-ticket.component.css'],
+  selector: 'create-ticket'
 })
-export class CreateOrderComponent extends SaveOrderComponent {
+export class CreateTicketComponent extends SaveTicketComponent {
 
-    public constructor(
-        private orderService: OrderService,
-        router: Router) {
-            super(router);
-    }
+  public constructor(
+    private ticketService: TicketService,
+    router: Router) {
+    super(router);
+  }
 
-    protected loadOrder(): Promise<Order> {
-        const order = new Order();
-        order.cost = 0.0;
-        return Promise.resolve(order);
-    }
+  protected loadTicket(): Promise<Ticket> {
+    const ticket = new Ticket();
+    return Promise.resolve(ticket);
+  }
 
-    protected getTitle(): string {
-        return "Create Order";
-    }
+  protected getTitle(): string {
+    return 'Create Ticket';
+  }
 
-    protected onSave() {
-        this.orderService.createOrder(this.order).then(order => this.navigateToOrders());
-    }
+  protected onSave() {
+    this.ticketService.createTicket(this.ticket).then(ticket => this.navigateToTickets());
+  }
 
-    protected getSaveButtonText(): string {
-        return 'Create';
-    }
+  protected getSaveButtonText(): string {
+    return 'Create';
+  }
 }

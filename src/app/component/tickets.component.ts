@@ -1,39 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Order } from '../order.resource';
-import { OrderService } from '../service/order.service';
+import { Ticket } from '../ticket.resource';
+import { TicketService } from '../service/ticket.service';
 
 @Component({
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css'],
-  selector: 'orders'
+  templateUrl: './tickets.component.html',
+  styleUrls: ['./tickets.component.css'],
+  selector: 'tickets'
 })
-export class OrdersComponent implements OnInit {
+export class TicketsComponent implements OnInit {
 
-  orders: Order[] = [];
+  tickets: Ticket[] = [];
   searchDescription: string;
 
-  constructor(private orderService: OrderService, private router: Router) { }
+  constructor(private ticketService: TicketService, private router: Router) { }
 
   ngOnInit() {
-    this.retrieveOrders();
+    this.retrieveTickets();
   }
 
-  private retrieveOrders() {
-    this.orderService.getOrders()
-      .then(orders => this.orders = orders);
+  private retrieveTickets() {
+    this.ticketService.getTickets()
+      .then(tickets => this.tickets = tickets);
   }
 
-  public deleteOrder(order: Order) {
-    this.orderService.deleteOrder(order)
-      .then(() => this.retrieveOrders());
+  public deleteTicket(ticket: Ticket) {
+    this.ticketService.deleteTicket(ticket)
+      .then(() => this.retrieveTickets());
   }
 
-  public editOrder(order: Order) {
-    this.router.navigate(['/orders', order.id, 'edit']);
+  public editTicket(ticket: Ticket) {
+    this.router.navigate(['/tickets', ticket.id, 'edit']);
   }
 
-  public createOrder() {
-    this.router.navigate(['/orders/create']);
+  public createTicket() {
+    this.router.navigate(['/tickets/create']);
   }
 }

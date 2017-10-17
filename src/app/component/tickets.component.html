@@ -1,4 +1,4 @@
-<div class="orders">
+<div class="tickets">
   <div class="search">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1" [(ngModel)]="searchDescription">
@@ -13,33 +13,38 @@
         <th class="actions">
           <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
         </th>
+        <th class="creator">Creator</th>
         <th class="description">Description</th>
-        <th class="cost">Cost</th>
-        <th class="status">Status</th>
+        <th class="created">Created</th>
+        <th class="due">Due</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let order of orders | orderDescriptionFilter:searchDescription" class="order" scope="row" [ngClass]="{'complete': order.isComplete}">
+      <tr *ngFor="let ticket of tickets | ticketDescriptionFilter:searchDescription" class="ticket" scope="row" [ngClass]="{'complete': ticket.isDue}">
         <td class="actions">
-          <span class="glyphicon glyphicon-pencil edit" (click)="editOrder(order)"></span>
-          <span class="glyphicon glyphicon-remove delete" (click)="deleteOrder(order)"></span>
+          <span class="glyphicon glyphicon-pencil edit" (click)="editTicket(ticket)"></span>
+          <span class="glyphicon glyphicon-remove delete" (click)="deleteTicket(ticket)"></span>
         </td>
-        <td class="description">{{order.description}}</td>
-        <td class="cost">{{order.costString}}</td>
+        <td class="creator">{{ticket.creator}}</td>
+        <td class="description">{{ticket.description}}</td>
+        <td class="created">{{ticket.created}}</td>
+        <td class="due">{{ticket.due}}</td>
+        <!--
         <td class="status">
           <span *ngIf="order.isIncomplete" class="label label-default">Incomplete</span>
           <span *ngIf="order.isComplete" class="label label-success">Complete</span>
         </td>
+      -->
       </tr>
 
       <!-- No orders are available -->
-      <tr *ngIf="orders.length === 0">
-        <td colspan="4" class="no-orders-message">No orders currently available</td>
+      <tr *ngIf="tickets.length === 0">
+        <td colspan="4" class="no-tickets-message">No tickets currently available</td>
       </tr>
     </tbody>
   </table>
   <div class="general-actions">
-    <button type="button" class="btn btn-primary" (click)="createOrder()">
+    <button type="button" class="btn btn-primary" (click)="createTicket()">
       <span class="glyphicon glyphicon-plus"></span> Create</button>
   </div>
 </div>

@@ -1,43 +1,43 @@
 import { OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Order } from '../order.resource';
+import { Ticket } from '../ticket.resource';
 
-export abstract class SaveOrderComponent implements OnInit {
+export abstract class SaveTicketComponent implements OnInit {
 
-    protected order: Order;
+  protected ticket: Ticket;
 
-    public constructor(private router: Router) {}
+  public constructor(private router: Router) { }
 
-    protected abstract loadOrder(): Promise<Order>;
-    protected abstract getTitle(): string;
-    protected abstract onSave();
-    protected abstract getSaveButtonText(): string;
+  protected abstract loadTicket(): Promise<Ticket>;
+  protected abstract getTitle(): string;
+  protected abstract onSave();
+  protected abstract getSaveButtonText(): string;
 
-    ngOnInit() {
-        this.loadOrder().then(order => this.order = order);
-    }
+  ngOnInit() {
+    this.loadTicket().then(ticket => this.ticket = ticket);
+  }
 
-    public isDescriptionValid(): boolean {
-        return this.order !== undefined && 
-            this.order.description !== undefined && 
-            this.order.description !== "";
-    }
+  public isCreatorValid(): boolean {
+    return this.ticket !== undefined &&
+      this.ticket.creator !== undefined &&
+      this.ticket.creator !== '';
+  }
 
-    public isCostValid(): boolean {
-        return this.order !== undefined &&
-            this.order.cost !== undefined &&
-            this.order.cost >= 0.0;
-    }
+  public isDescriptionValid(): boolean {
+    return this.ticket !== undefined &&
+      this.ticket.description !== undefined &&
+      this.ticket.description !== '';
+  }
 
-    public canSubmit(): boolean {
-        return this.isDescriptionValid() && this.isCostValid();
-    }
+  public canSubmit(): boolean {
+    return this.isCreatorValid && this.isDescriptionValid();
+  }
 
-    public onCancel() {
-		this.navigateToOrders();
-	}
+  public onCancel() {
+    this.navigateToTickets();
+  }
 
-    protected navigateToOrders() {
-		this.router.navigate(['/orders']);
-	}
+  protected navigateToTickets() {
+    this.router.navigate(['/tickets']);
+  }
 }

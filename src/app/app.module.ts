@@ -5,21 +5,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { OrdersComponent } from './component/orders.component';
-import { EditOrderComponent } from './component/edit-order.component';
-import { CreateOrderComponent } from './component/create-order.component';
+import { TicketsComponent } from './component/tickets.component';
+import { EditTicketComponent } from './component/edit-ticket.component';
+import { CreateTicketComponent } from './component/create-ticket.component';
 
-import { OrderService } from './service/order.service';
-import { OrderDescriptionPipe } from './component/order-description.filter';
+import { TicketService } from './service/ticket.service';
+import { TicketDescriptionPipe } from './component/ticket-description.filter';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrdersComponent,
-    EditOrderComponent,
-    CreateOrderComponent,
-    OrderDescriptionPipe
+    TicketsComponent,
+    EditTicketComponent,
+    CreateTicketComponent,
+    TicketDescriptionPipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule
   ],
   providers: [
-    OrderService
+    TicketService
   ],
   bootstrap: [AppComponent]
 })

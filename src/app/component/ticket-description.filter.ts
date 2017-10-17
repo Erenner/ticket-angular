@@ -1,19 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Order } from '../order.resource';
+import { Ticket } from '../ticket.resource';
 
 @Pipe({
-    name: 'orderDescriptionFilter',
-    pure: false
+  name: 'ticketDescriptionFilter',
+  pure: false
 })
-export class OrderDescriptionPipe implements PipeTransform {
-    
-	transform(orders: Order[], description: string): any {
+export class TicketDescriptionPipe implements PipeTransform {
 
-		if (description === "" || description === undefined) {
-			return orders;
-		}
-		else {
-        	return orders.filter(order => order.description.toLowerCase().startsWith(description.toLowerCase()));
-		}
+  transform(tickets: Ticket[], description: string): any {
+
+    if (description === '' || description === undefined) {
+      return tickets;
+    } else {
+      return tickets.filter(ticket => ticket.description.toLowerCase().startsWith(description.toLowerCase()));
     }
+  }
 }

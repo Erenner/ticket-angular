@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
- 
-import { OrdersComponent } from './component/orders.component';
-import { EditOrderComponent } from './component/edit-order.component';
-import { CreateOrderComponent } from './component/create-order.component';
- 
+
+import { TicketsComponent } from './component/tickets.component';
+import { EditTicketComponent } from './component/edit-ticket.component';
+import { CreateTicketComponent } from './component/create-ticket.component';
+
 const routes: Routes = [
-    { path: '', redirectTo: '/orders', pathMatch: 'full' },
-    { path: 'orders',  component: OrdersComponent },
-    { path: 'orders/:id/edit', component: EditOrderComponent },
-    { path: 'orders/create', component: CreateOrderComponent }
+  { path: '', redirectTo: '/tickets', pathMatch: 'full' },
+  { path: 'tickets', component: TicketsComponent },
+  { path: 'tickets/:id/edit', component: EditTicketComponent },
+  { path: 'tickets/create', component: CreateTicketComponent }
 ];
- 
+
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

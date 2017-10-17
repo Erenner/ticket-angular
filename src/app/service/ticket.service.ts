@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TicketService {
 
-  private ticketsUrl = 'http://localhost:????/tickets';
+  private ticketsUrl = 'http://localhost:9000/v1/tickets';
   private headers = new Headers({ 'Access-Control-Allow-Origin': '*', 'Accepts': 'application/json', 'Content-Type': 'application/json' });
 
   public constructor(private http: Http) { }
@@ -32,7 +32,7 @@ export class TicketService {
       .catch(this.handleError);
   }
 
-  public updateOrder(ticket: Ticket): Promise<Ticket> {
+  public updateTicket(ticket: Ticket): Promise<Ticket> {
     return this.http.put(ticket.links.update.href, JSON.stringify(ticket.serialize()), { headers: this.headers })
       .toPromise()
       .then(this.convertResponseToTicketResource)
