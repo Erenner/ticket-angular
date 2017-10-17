@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { Order } from './ticket.resource';
+import { Ticket } from './ticket.resource';
 
-class OrderFactory {
+class TicketFactory {
 
 
 }
