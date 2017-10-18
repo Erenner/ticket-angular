@@ -1,11 +1,5 @@
 import { Link } from './links';
 
-class TicketLinks {
-  self: Link;
-  update: Link;
-  delete: Link;
-}
-
 export class Ticket {
 
   id: number;
@@ -13,7 +7,7 @@ export class Ticket {
   description: string;
   created: Date;
   due: Date;
-  links: TicketLinks;
+  link: Link;
 
   public constructor() { }
 
@@ -29,7 +23,7 @@ export class Ticket {
     this.description = json.description;
     this.created = json.created;
     this.due = json.due;
-    this.links = json._links;
+    this.link = json.link;
   }
 
   public serialize(): any {
