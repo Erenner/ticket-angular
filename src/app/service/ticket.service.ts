@@ -33,14 +33,14 @@ export class TicketService {
   }
 
   public updateTicket(ticket: Ticket): Promise<Ticket> {
-    return this.http.put(ticket.link.href, JSON.stringify(ticket.serialize()), { headers: this.headers })
+    return this.http.post(ticket.link, JSON.stringify(ticket.serialize()), { headers: this.headers })
       .toPromise()
       .then(this.convertResponseToTicketResource)
       .catch(this.handleError);
   }
 
   public deleteTicket(ticket: Ticket): Promise<void> {
-    return this.http.delete(ticket.link.href, { headers: this.headers })
+    return this.http.delete(ticket.link, { headers: this.headers })
       .toPromise()
       .then(response => null)
       .catch(this.handleError);

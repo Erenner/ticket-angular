@@ -1,5 +1,3 @@
-import { Link } from './links';
-
 export class Ticket {
 
   id: number;
@@ -7,7 +5,7 @@ export class Ticket {
   description: string;
   created: Date;
   due: Date;
-  link: Link;
+  link: string;
 
   public constructor() { }
 
