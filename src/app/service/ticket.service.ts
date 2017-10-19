@@ -33,7 +33,7 @@ export class TicketService {
   }
 
   public updateTicket(ticket: Ticket): Promise<Ticket> {
-    return this.http.post(ticket.link, JSON.stringify(ticket.serialize()), { headers: this.headers })
+    return this.http.put(ticket.link, JSON.stringify(ticket.serialize()), { headers: this.headers })
       .toPromise()
       .then(this.convertResponseToTicketResource)
       .catch(this.handleError);
